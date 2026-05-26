@@ -26,12 +26,14 @@
       line-height: 21px;
       font-size: 18px;
       font-weight: bold;
+
       .box__icon {
         position: absolute;
         left: 20px;
+
         .box__line {
-          position: absolute;
           display: block;
+          position: absolute;
           width: 30px;
           height: 2px;
           border-radius: 10px;
@@ -60,10 +62,10 @@
 
         .link__category-menu {
           display: inline-block;
-          font-size: 16px;
-          font-weight: bold;
           color: #000;
           line-height: 32px;
+          font-size: 16px;
+          font-weight: bold;
         }
       }
       .list-item + .list-item {
@@ -79,19 +81,27 @@
 
       .list-item {
         display: inline;
+        position: relative;
 
         .link__util-menu,
         .button__dropdown-title {
           display: inline-block;
           padding: 0;
-          font-size: 16px;
           color: #777;
-          letter-spacing: -1px;
           line-height: 32px;
+          font-size: 14px;
+          letter-spacing: -1px;
           vertical-align: top;
         }
         .button__dropdown-title {
+          position: relative;
+          height: 32px;
+          padding: 0 20px 0 8px;
           padding-right: 20px;
+
+          &:active {
+display: block;
+          }
         }
         .button__dropdown-title::after {
           content: '';
@@ -105,11 +115,34 @@
           transform: translateY(-50%) rotate(135deg);
         }
         .list__lang-option {
-          height: 0;
-          overflow: hidden;
-        }
-        .list__lang-option.is-active {
-          height: auto;
+          display: none;
+          position: absolute;
+          top: 31px;
+          right: 0;
+          z-index: 10;
+          width: 98px;
+          border: 1px solid #777;
+          background: #fff;
+
+          &:active {
+            display: block;
+          }
+          .list-item {
+            display: block;
+          }
+          & button {
+            width: 100%;
+            height: 42px;
+            padding: 0 20px;
+            border: 0;
+            background: #fff;
+            color: #777;
+            text-align: left;
+            font-size: 14px;
+            &:hover {
+              color: #000;
+            }
+          }
         }
       }
       .list-item + .list-item {
@@ -128,23 +161,23 @@
   }
   .box__category-list {
     position: absolute;
-    z-index: 10;
     top: 0;
     left: 0;
+    z-index: 10;
     width: 224px;
     height: 400px;
     background-color: #0abb26;
 
     .list__category-all {
       .list-item {
-        position: relative;
         display: block;
+        position: relative;
         height: 44px;
-        font-size: 15px;
-        letter-spacing: -1px;
         color: #fff;
-        text-indent: 24px;
         line-height: 42px;
+        font-size: 15px;
+        text-indent: 24px;
+        letter-spacing: -1px;
       }
       .list-item:not(:last-child) {
         border-bottom: 1px solid rgba(207, 207, 207, 0.5);
@@ -160,13 +193,32 @@
     width: 100%;
     height: 400px;
 
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    &:after {
+      left: calc(50% + 600px);
+      right: 0;
+    }
+
+    &::before {
+      left: 0;
+      width: calc(50% - 600px + 224px);
+    }
+
     .box__banner {
       overflow: visible;
       position: relative;
       width: 976px;
       height: 400px;
       margin-left: calc(50% - 600px + 224px);
-      /* border: 10px solid #c94c4c; */
 
       .swiper-wrapper {
         width: auto;
@@ -174,22 +226,14 @@
         .swiper-slide {
           width: 976px;
           height: 400px;
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
         }
       }
 
       .box__nav--control {
         position: absolute;
         top: 0;
-        /* left: 50%; */
         width: 976px;
         height: 400px;
-        /* transform: translateX(-50%); */
 
         .swiper-button-prev,
         .swiper-button-next {
@@ -198,10 +242,6 @@
           border-radius: 50%;
           color: #fff;
         }
-
-        /* .swiper-button-prev{
-                left: 244px;
-            } */
 
         .box__control {
           position: absolute;
@@ -214,13 +254,13 @@
             inset: 0;
             width: 76px;
             height: 40px;
-            border-radius: 20px;
             margin-left: 6px;
-            font-size: 18px;
-            font-weight: bold;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
             color: #fff;
             line-height: 38px;
-            background-color: rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            font-weight: bold;
             vertical-align: middle;
           }
 
@@ -238,11 +278,11 @@
               content: '';
               position: absolute;
               top: 50%;
-              transform: translatey(-50%);
               width: 2px;
               height: 15px;
               border-radius: 10px;
               background-color: #fff;
+              transform: translatey(-50%);
             }
             &::before {
               left: 15px;
